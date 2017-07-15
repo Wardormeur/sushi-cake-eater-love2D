@@ -18,7 +18,7 @@ Love2D provides installers from their website.
 ##### Linux
 Depending on your distribution, it may be packaged using ```apt-get install love2d```
 If it's not available as a package, you'll have to build it. Precise instructions are described on [their wiki](https://love2d.org/wiki/Building_L%C3%96VE).
-After installing by running love2D  in your console with ``` love  ```, you should see the ![following screenshot](../assets/no-game.png)
+After installing by running love2D  in your console with ``` love  ```, you should see the ![following screenshot](assets/no-game.png)
 #### (Optional) Installing Piskel
 If you which to create your own character, it's recommended to install Piskel. You can get the installer [on their website](http://www.piskelapp.com/download).
 All images provided for this sushi card are accessible as .piskel format so you can modify them.
