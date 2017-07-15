@@ -1,6 +1,6 @@
 #Summary
 
-* [Getting Setup](01.md)
+* [Getting Setup](README.md)
 * [Game basics : the world](02.md)
 * [Game mechanics : position and movement](03.md)
 * [Polishing](04.md)
