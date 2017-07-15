@@ -1,6 +1,6 @@
 ## A basic game
 In this sushi-card, we're going to create a simple game.
-The game goal is to get as many points as possible. When eating cakes, you get points, but also get bigger. When drinking water, you get smaller. When eating poison, you lose.
+The game goal is to get as many points as possible. When eating cakes, you get points. When eating a poisonous cake, you lose :(
 ### Introduction to Love2D
 [Love2D](https://love2d.org/) is a multiplatform, open-source engine to create games. It'll also introduce how to make simple graphics to use in game.
 #### Checklist based on the "game-design" sushi-card
