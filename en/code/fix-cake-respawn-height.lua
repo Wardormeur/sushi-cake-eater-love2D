@@ -1,14 +1,16 @@
 player = {}
 cakes = {}
 window = {}
+counter = {}
 function love.load()
   title = "The cake Lover!"
   love.window.setTitle(title)
-  love.graphics.setBackgroundColor(135, 206, 250)
+  love.graphics.setFont(love.graphics.newFont(25))
   window.height = 600
   window.width = 800
   love.window.setMode(window.width, window.height)
-	player.image = love.graphics.newImage('../code/assets/character.png')
+  love.graphics.setBackgroundColor(135, 206, 250)
+	player.image = love.graphics.newImage('en/code/assets/character.png')
   player.width, player.height = player.image:getDimensions()
   player.x = 0
   player.y = 0
@@ -17,34 +19,36 @@ function love.load()
   cakes.types = {}
   cakes.types[0] = "birthday"
   cakes.images = {}
-  cakes.images["birthday"] = love.graphics.newImage('../code/assets/birthday.png')
+  cakes.images["birthday"] = love.graphics.newImage('en/code/assets/birthday.png')
   cakes.dimensions = {}
   cakes.dimensions["birthday"] = {}
   cakes.dimensions["birthday"].width, cakes.dimensions["birthday"].height = cakes.images["birthday"]:getDimensions()
   cakes.instances = {}
+  counter = 0
 end
 
 function love.update(dt)
   -- character movement
-  if love.keyboard.isDown("left") then
+  if love.keyboard.isDown("left") and player.x > 0 then
     player.x = player.x - (player.speed * dt);
   end
-  if love.keyboard.isDown("right") then
+  if love.keyboard.isDown("right") and player.x < window.width - player.width then
     player.x = player.x + (player.speed * dt);
   end
-  if love.keyboard.isDown("up") then
+  if love.keyboard.isDown("up") and player.y > 0 then
     player.y = player.y - (player.speed * dt);
   end
-  if love.keyboard.isDown("down") then
+  if love.keyboard.isDown("down") and player.y < window.height - player.height then
     player.y = player.y + (player.speed * dt);
   end
+  print(player.y , window.height, player.x, window.width)
   -- cakes creation
   for i=(#cakes.instances) + 1, cakes.maxSimultaneousCakes do
     cakes.instances[i] = {}
     cakes.instances[i].x = window.width
-    cakes.instances[i].y = math.random(0, window.height - 180)
     cakes.instances[i].speed = math.random(1, 150);
     cakes.instances[i].type = cakes.types[0];
+    cakes.instances[i].y = math.random(0, window.height - cakes.dimensions[cakes.instances[i].type].height)
   end
   -- cakes movement
   for i=#cakes.instances, 1, -1 do
@@ -55,6 +59,7 @@ function love.update(dt)
        player.y < lecake.y + cakes.dimensions[lecake.type].height and
        player.height + player.y > lecake.y then
          table.remove(cakes.instances, i)
+         counter = counter + 100
     end
   end
 
@@ -66,4 +71,5 @@ function love.draw()
     local lecake = cakes.instances[i]
     love.graphics.draw(cakes.images[lecake.type], lecake.x, lecake.y)
   end
+  love.graphics.printf("Score: "..counter, 10, 10, 9999)
 end

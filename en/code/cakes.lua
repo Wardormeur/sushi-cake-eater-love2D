@@ -5,11 +5,13 @@ function love.load()
   title = "The cake Lover!"
   love.window.setTitle(title)
   love.graphics.setBackgroundColor(135, 206, 250)
+  window.height = 600
+  window.width = 800
+  love.window.setMode(window.width, window.height)
 	player.image = love.graphics.newImage('../code/assets/character.png')
   player.x = 0
   player.y = 0
   player.speed = 150
-  window.height, window.width = love.window.getMode()
   cakes.maxSimultaneousCakes = 5
   cakes.types = {}
   cakes.types[0] = "birthday"

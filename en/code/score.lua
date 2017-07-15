@@ -7,12 +7,14 @@ function love.load()
   love.window.setTitle(title)
   love.graphics.setFont(love.graphics.newFont(25))
   love.graphics.setBackgroundColor(135, 206, 250)
+  window.height = 600
+  window.width = 800
+  love.window.setMode(window.width, window.height)
 	player.image = love.graphics.newImage('assets/character.png')
   player.width, player.height = player.image:getDimensions()
   player.x = 0
   player.y = 0
   player.speed = 150
-  window.height, window.width = love.window.getMode()
   cakes.maxSimultaneousCakes = 5
   cakes.types = {}
   cakes.types[0] = "birthday"
