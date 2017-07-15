@@ -5,7 +5,7 @@ function love.load()
   title = "The cake Lover!"
   love.window.setTitle(title)
   love.graphics.setBackgroundColor(135, 206, 250)
-	player.image = love.graphics.newImage('code/assets/character.png')
+	player.image = love.graphics.newImage('../code/assets/character.png')
   player.width, player.height = player.image:getDimensions()
   player.x = 0
   player.y = 0
@@ -15,7 +15,7 @@ function love.load()
   cakes.types = {}
   cakes.types[0] = "birthday"
   cakes.images = {}
-  cakes.images["birthday"] = love.graphics.newImage('code/assets/birthday.png')
+  cakes.images["birthday"] = love.graphics.newImage('../code/assets/birthday.png')
   cakes.dimensions = {}
   cakes.dimensions["birthday"] = {}
   cakes.dimensions["birthday"].width, cakes.dimensions["birthday"].height = cakes.images["birthday"]:getDimensions()
@@ -42,7 +42,7 @@ function love.update(dt)
     cakes.instances[i].x = window.width
     cakes.instances[i].y = math.random(0, window.height - 180)
     cakes.instances[i].speed = math.random(1, 150);
-    cakes.instances[i].type = cakes.types[0]; 
+    cakes.instances[i].type = cakes.types[0];
   end
   -- cakes movement
   for i=#cakes.instances, 1, -1 do

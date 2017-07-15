@@ -7,7 +7,7 @@ function love.load()
   love.window.setTitle(title)
   love.graphics.setFont(love.graphics.newFont(25))
   love.graphics.setBackgroundColor(135, 206, 250)
-	player.image = love.graphics.newImage('code/assets/character.png')
+	player.image = love.graphics.newImage('assets/character.png')
   player.width, player.height = player.image:getDimensions()
   player.x = 0
   player.y = 0
@@ -17,7 +17,7 @@ function love.load()
   cakes.types = {}
   cakes.types[0] = "birthday"
   cakes.images = {}
-  cakes.images["birthday"] = love.graphics.newImage('code/assets/birthday.png')
+  cakes.images["birthday"] = love.graphics.newImage('assets/birthday.png')
   cakes.dimensions = {}
   cakes.dimensions["birthday"] = {}
   cakes.dimensions["birthday"].width, cakes.dimensions["birthday"].height = cakes.images["birthday"]:getDimensions()

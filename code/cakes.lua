@@ -5,7 +5,7 @@ function love.load()
   title = "The cake Lover!"
   love.window.setTitle(title)
   love.graphics.setBackgroundColor(135, 206, 250)
-	player.image = love.graphics.newImage('code/assets/character.png')
+	player.image = love.graphics.newImage('../code/assets/character.png')
   player.x = 0
   player.y = 0
   player.speed = 150
@@ -14,7 +14,7 @@ function love.load()
   cakes.types = {}
   cakes.types[0] = "birthday"
   cakes.images = {}
-  cakes.images["birthday"] = love.graphics.newImage('code/assets/birthday.png')
+  cakes.images["birthday"] = love.graphics.newImage('../code/assets/birthday.png')
   cakes.instances = {}
 end
 
