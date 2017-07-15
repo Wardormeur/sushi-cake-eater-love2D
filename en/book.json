@@ -1,8 +1,8 @@
 {
-    "title":"Beginner HTML",
+    "title":"Löve2D: a gaming engine in Lua",
     "language":"en",
     "variables":{
-        "seriesTitle": "Beginner HTML"
+        "seriesTitle": "Medium Lua"
     },
     "direction":"ltr",
     "pdf":{
