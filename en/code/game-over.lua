@@ -86,7 +86,7 @@ function love.draw()
   if player.alive == 1 then
     love.graphics.printf("Score: "..counter, 10, 10, 9999)
   elseif player.alive == 0 then
-    love.graphics.printf("GAME OVER", window.height/2, window.width/2, 9999)
-    love.graphics.printf(counter.." points", (window.height/2) + 18, (window.width/2) + 18, 9999)
+    love.graphics.printf("GAME OVER", window.width/2, window.height/2, 9999)
+    love.graphics.printf(counter.." points", (window.width/2), (window.height/2) + 18, 9999)
   end
 end

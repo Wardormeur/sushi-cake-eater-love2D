@@ -10,13 +10,17 @@ function love.load()
   window.width = 800
   love.window.setMode(window.width, window.height)
   love.graphics.setBackgroundColor(135, 206, 250)
-	player.image = love.graphics.newImage('en/code/assets/player.png')
-  player.width, player.height = player.image:getDimensions()
+	player.image = love.graphics.newImage('en/code/assets/player-animated.png')
+  player.img = {}
+  player.img.standby = love.graphics.newQuad(0, 0, 96, 96, player.image:getDimensions())
+  player.img.eating = love.graphics.newQuad(96, 0, 96, 96, player.image:getDimensions())
+  player.width, player.height = 96, 96
   player.x = 0
   player.y = 0
   player.alive = 1
-  player.speed = 150
-  cakes.maxSimultaneousCakes = 5
+  player.speed = 350
+  player.eating = 0
+  cakes.maxSimultaneousCakes = 10
   cakes.types = {}
   cakes.types[1] = "birthday"
   cakes.types[2] = "poisonous"
@@ -34,6 +38,7 @@ end
 
 function love.update(dt)
   if player.alive == 1 then
+    player.eating = 0
     -- character movement
     if love.keyboard.isDown("left") and player.x > 0 then
       player.x = player.x - (player.speed * dt);
@@ -49,6 +54,7 @@ function love.update(dt)
     end
     -- cakes creation
     for i=(#cakes.instances) + 1, cakes.maxSimultaneousCakes do
+      math.randomseed( os.time() + i )
       cakes.instances[i] = {}
       cakes.instances[i].x = window.width
       cakes.instances[i].speed = math.random(1, 250);
@@ -63,6 +69,7 @@ function love.update(dt)
          player.x + player.width > lecake.x and
          player.y < lecake.y + cakes.dimensions[lecake.type].height and
          player.height + player.y > lecake.y then
+           player.eating = 1
            if lecake.type == "birthday" then
              counter = counter + 100
              table.remove(cakes.instances, i)
@@ -78,7 +85,11 @@ function love.update(dt)
 end
 
 function love.draw()
-  love.graphics.draw(player.image, player.x, player.y)
+  local sprite = player.img.standby
+  if player.eating == 1 then
+    sprite = player.img.eating
+  end
+  love.graphics.draw(player.image, sprite, player.x, player.y)
   for i=1, #cakes.instances do
     local lecake = cakes.instances[i]
     love.graphics.draw(cakes.images[lecake.type], lecake.x, lecake.y)
@@ -86,7 +97,7 @@ function love.draw()
   if player.alive == 1 then
     love.graphics.printf("Score: "..counter, 10, 10, 9999)
   elseif player.alive == 0 then
-    love.graphics.printf("GAME OVER", window.height/2, window.width/2, 9999)
-    love.graphics.printf(counter.." points", (window.height/2) + 18, (window.width/2) + 18, 9999)
+    love.graphics.printf("GAME OVER", window.width/2 - (4.5 * 18), window.height/2, 9999)
+    love.graphics.printf(counter.." points", (window.width/2 - (string.len(counter)) * 18), (window.height/2) + 18, 9999)
   end
 end
